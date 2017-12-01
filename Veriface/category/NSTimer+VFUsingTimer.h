@@ -10,4 +10,9 @@
 
 @interface NSTimer (VFUsingTimer)
 
++ (NSTimer *)tw_scheduledTimerWithTimeInterval:(NSTimeInterval)ti
+                                         block:(void(^)())block
+                                       repeats:(BOOL)repeats;
+
+
 @end

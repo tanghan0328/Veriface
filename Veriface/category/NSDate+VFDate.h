@@ -10,4 +10,6 @@
 
 @interface NSDate (VFDate)
 
++ (NSString *)nowdateToString;
+
 @end

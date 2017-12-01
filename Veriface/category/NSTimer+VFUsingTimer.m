@@ -10,4 +10,23 @@
 
 @implementation NSTimer (VFUsingTimer)
 
++ (NSTimer *)tw_scheduledTimerWithTimeInterval:(NSTimeInterval)ti
+                                         block:(void(^)())block
+                                       repeats:(BOOL)repeats{
+    
+    return [self scheduledTimerWithTimeInterval:ti
+                                         target:self
+                                       selector:@selector(tw_blockInvoke:)
+                                       userInfo:[block copy]
+                                        repeats:repeats];
+}
+
++ (void)tw_blockInvoke:(NSTimer *)timer{
+    
+    void(^block)() = timer.userInfo;
+    if (block) {
+        block();
+    }
+}
+
 @end

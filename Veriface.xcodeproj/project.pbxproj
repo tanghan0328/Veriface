@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		663CE5751FC7AC9300D03876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5741FC7AC9300D03876 /* AppDelegate.m */; };
-		663CE5781FC7AC9300D03876 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5771FC7AC9300D03876 /* ViewController.m */; };
-		663CE57B1FC7AC9300D03876 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CE5791FC7AC9300D03876 /* Main.storyboard */; };
 		663CE57D1FC7AC9300D03876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663CE57C1FC7AC9300D03876 /* Assets.xcassets */; };
-		663CE5801FC7AC9300D03876 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CE57E1FC7AC9300D03876 /* LaunchScreen.storyboard */; };
 		663CE5831FC7AC9300D03876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5821FC7AC9300D03876 /* main.m */; };
 		663CE58D1FC7AC9300D03876 /* VerifaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE58C1FC7AC9300D03876 /* VerifaceTests.m */; };
 		663CE5981FC7AC9300D03876 /* VerifaceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5971FC7AC9300D03876 /* VerifaceUITests.m */; };
+		663CE5A91FC7C82D00D03876 /* VFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5A81FC7C82D00D03876 /* VFBaseViewController.m */; };
+		663CE5AC1FC7C86C00D03876 /* VFVeriFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5AB1FC7C86C00D03876 /* VFVeriFaceController.m */; };
+		6652C4481FCFA70700498458 /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6652C4471FCFA70700498458 /* NetManager.m */; };
+		669FF3BA1FD126CA00EB29F3 /* NSDate+VFDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */; };
+		669FF3BD1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 669FF3BC1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m */; };
+		66C37F7C1FCFB2710015F7D2 /* VFFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F7B1FCFB2710015F7D2 /* VFFrontViewController.m */; };
+		66C37F7F1FCFE02D0015F7D2 /* VFEmployeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F7E1FCFE02D0015F7D2 /* VFEmployeeViewController.m */; };
+		66C37F821FCFF1060015F7D2 /* VFLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F811FCFF1060015F7D2 /* VFLeftViewController.m */; };
+		66C37F851FCFF37C0015F7D2 /* VFRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F841FCFF37C0015F7D2 /* VFRightViewController.m */; };
+		66C37F881FCFF6E00015F7D2 /* VFTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F871FCFF6E00015F7D2 /* VFTopViewController.m */; };
+		66C37F8B1FCFF7220015F7D2 /* VFBottomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F8A1FCFF7220015F7D2 /* VFBottomViewController.m */; };
+		66C37F8F1FCFFEC00015F7D2 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F8E1FCFFEC00015F7D2 /* UIImage+Crop.m */; };
+		F24E25697D996825E3326536 /* Pods_Veriface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98474D40BF3302F9ECBA119 /* Pods_Veriface.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072B893BD46D30495E3FA06D /* Pods-Veriface.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veriface.release.xcconfig"; path = "Pods/Target Support Files/Pods-Veriface/Pods-Veriface.release.xcconfig"; sourceTree = "<group>"; };
+		0EEC0194B2B27C5B932E8781 /* Pods-Veriface.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Veriface.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Veriface/Pods-Veriface.debug.xcconfig"; sourceTree = "<group>"; };
 		663CE5701FC7AC9300D03876 /* Veriface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veriface.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		663CE5731FC7AC9300D03876 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		663CE5741FC7AC9300D03876 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		663CE5761FC7AC9300D03876 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		663CE5771FC7AC9300D03876 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		663CE57A1FC7AC9300D03876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		663CE57C1FC7AC9300D03876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		663CE57F1FC7AC9300D03876 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		663CE5811FC7AC9300D03876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		663CE5821FC7AC9300D03876 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		663CE5881FC7AC9300D03876 /* VerifaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerifaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +59,32 @@
 		663CE5931FC7AC9300D03876 /* VerifaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerifaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		663CE5971FC7AC9300D03876 /* VerifaceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerifaceUITests.m; sourceTree = "<group>"; };
 		663CE5991FC7AC9300D03876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		663CE5A51FC7C42000D03876 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		663CE5A71FC7C82D00D03876 /* VFBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFBaseViewController.h; sourceTree = "<group>"; };
+		663CE5A81FC7C82D00D03876 /* VFBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFBaseViewController.m; sourceTree = "<group>"; };
+		663CE5AA1FC7C86C00D03876 /* VFVeriFaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFVeriFaceController.h; sourceTree = "<group>"; };
+		663CE5AB1FC7C86C00D03876 /* VFVeriFaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFVeriFaceController.m; sourceTree = "<group>"; };
+		6652C4461FCFA70700498458 /* NetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
+		6652C4471FCFA70700498458 /* NetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
+		669FF3B81FD126CA00EB29F3 /* NSDate+VFDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+VFDate.h"; sourceTree = "<group>"; };
+		669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VFDate.m"; sourceTree = "<group>"; };
+		669FF3BB1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+VFUsingTimer.h"; sourceTree = "<group>"; };
+		669FF3BC1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+VFUsingTimer.m"; sourceTree = "<group>"; };
+		66C37F7A1FCFB2710015F7D2 /* VFFrontViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFFrontViewController.h; sourceTree = "<group>"; };
+		66C37F7B1FCFB2710015F7D2 /* VFFrontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFFrontViewController.m; sourceTree = "<group>"; };
+		66C37F7D1FCFE02D0015F7D2 /* VFEmployeeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFEmployeeViewController.h; sourceTree = "<group>"; };
+		66C37F7E1FCFE02D0015F7D2 /* VFEmployeeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFEmployeeViewController.m; sourceTree = "<group>"; };
+		66C37F801FCFF1060015F7D2 /* VFLeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFLeftViewController.h; sourceTree = "<group>"; };
+		66C37F811FCFF1060015F7D2 /* VFLeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFLeftViewController.m; sourceTree = "<group>"; };
+		66C37F831FCFF37C0015F7D2 /* VFRightViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFRightViewController.h; sourceTree = "<group>"; };
+		66C37F841FCFF37C0015F7D2 /* VFRightViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFRightViewController.m; sourceTree = "<group>"; };
+		66C37F861FCFF6E00015F7D2 /* VFTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFTopViewController.h; sourceTree = "<group>"; };
+		66C37F871FCFF6E00015F7D2 /* VFTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFTopViewController.m; sourceTree = "<group>"; };
+		66C37F891FCFF7220015F7D2 /* VFBottomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VFBottomViewController.h; sourceTree = "<group>"; };
+		66C37F8A1FCFF7220015F7D2 /* VFBottomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFBottomViewController.m; sourceTree = "<group>"; };
+		66C37F8D1FCFFEC00015F7D2 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		66C37F8E1FCFFEC00015F7D2 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		F98474D40BF3302F9ECBA119 /* Pods_Veriface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veriface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F24E25697D996825E3326536 /* Pods_Veriface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +120,8 @@
 				663CE58B1FC7AC9300D03876 /* VerifaceTests */,
 				663CE5961FC7AC9300D03876 /* VerifaceUITests */,
 				663CE5711FC7AC9300D03876 /* Products */,
+				A6BD3485ED39246C8C728453 /* Pods */,
+				F9F4124928516BBC6A93D3CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,13 +140,16 @@
 			children = (
 				663CE5731FC7AC9300D03876 /* AppDelegate.h */,
 				663CE5741FC7AC9300D03876 /* AppDelegate.m */,
-				663CE5761FC7AC9300D03876 /* ViewController.h */,
-				663CE5771FC7AC9300D03876 /* ViewController.m */,
-				663CE5791FC7AC9300D03876 /* Main.storyboard */,
+				663CE5A71FC7C82D00D03876 /* VFBaseViewController.h */,
+				663CE5A81FC7C82D00D03876 /* VFBaseViewController.m */,
+				6652C4491FCFAFC500498458 /* photoInput */,
+				663CE5A61FC7C7EA00D03876 /* Veriface */,
+				6652C4451FCFA6D900498458 /* model */,
+				66C37F8C1FCFFEC00015F7D2 /* category */,
 				663CE57C1FC7AC9300D03876 /* Assets.xcassets */,
-				663CE57E1FC7AC9300D03876 /* LaunchScreen.storyboard */,
 				663CE5811FC7AC9300D03876 /* Info.plist */,
 				663CE5821FC7AC9300D03876 /* main.m */,
+				663CE5A51FC7C42000D03876 /* PrefixHeader.pch */,
 			);
 			path = Veriface;
 			sourceTree = "<group>";
@@ -132,6 +172,74 @@
 			path = VerifaceUITests;
 			sourceTree = "<group>";
 		};
+		663CE5A61FC7C7EA00D03876 /* Veriface */ = {
+			isa = PBXGroup;
+			children = (
+				663CE5AA1FC7C86C00D03876 /* VFVeriFaceController.h */,
+				663CE5AB1FC7C86C00D03876 /* VFVeriFaceController.m */,
+			);
+			path = Veriface;
+			sourceTree = "<group>";
+		};
+		6652C4451FCFA6D900498458 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6652C4461FCFA70700498458 /* NetManager.h */,
+				6652C4471FCFA70700498458 /* NetManager.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6652C4491FCFAFC500498458 /* photoInput */ = {
+			isa = PBXGroup;
+			children = (
+				66C37F7D1FCFE02D0015F7D2 /* VFEmployeeViewController.h */,
+				66C37F7E1FCFE02D0015F7D2 /* VFEmployeeViewController.m */,
+				66C37F7A1FCFB2710015F7D2 /* VFFrontViewController.h */,
+				66C37F7B1FCFB2710015F7D2 /* VFFrontViewController.m */,
+				66C37F801FCFF1060015F7D2 /* VFLeftViewController.h */,
+				66C37F811FCFF1060015F7D2 /* VFLeftViewController.m */,
+				66C37F831FCFF37C0015F7D2 /* VFRightViewController.h */,
+				66C37F841FCFF37C0015F7D2 /* VFRightViewController.m */,
+				66C37F861FCFF6E00015F7D2 /* VFTopViewController.h */,
+				66C37F871FCFF6E00015F7D2 /* VFTopViewController.m */,
+				66C37F891FCFF7220015F7D2 /* VFBottomViewController.h */,
+				66C37F8A1FCFF7220015F7D2 /* VFBottomViewController.m */,
+			);
+			name = photoInput;
+			path = Veriface/photoInput;
+			sourceTree = SOURCE_ROOT;
+		};
+		66C37F8C1FCFFEC00015F7D2 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				66C37F8D1FCFFEC00015F7D2 /* UIImage+Crop.h */,
+				66C37F8E1FCFFEC00015F7D2 /* UIImage+Crop.m */,
+				669FF3B81FD126CA00EB29F3 /* NSDate+VFDate.h */,
+				669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */,
+				669FF3BB1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.h */,
+				669FF3BC1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		A6BD3485ED39246C8C728453 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0EEC0194B2B27C5B932E8781 /* Pods-Veriface.debug.xcconfig */,
+				072B893BD46D30495E3FA06D /* Pods-Veriface.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F9F4124928516BBC6A93D3CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F98474D40BF3302F9ECBA119 /* Pods_Veriface.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 663CE59C1FC7AC9300D03876 /* Build configuration list for PBXNativeTarget "Veriface" */;
 			buildPhases = (
+				515615138B01ADD769530870 /* [CP] Check Pods Manifest.lock */,
 				663CE56C1FC7AC9300D03876 /* Sources */,
 				663CE56D1FC7AC9300D03876 /* Frameworks */,
 				663CE56E1FC7AC9300D03876 /* Resources */,
+				8439A0710AB4FEA13047CFA7 /* [CP] Embed Pods Frameworks */,
+				678D5040962F4ECE9DE2EC6B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +305,7 @@
 		663CE5681FC7AC9300D03876 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = VF;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "tang tang";
 				TargetAttributes = {
@@ -238,9 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663CE5801FC7AC9300D03876 /* LaunchScreen.storyboard in Resources */,
 				663CE57D1FC7AC9300D03876 /* Assets.xcassets in Resources */,
-				663CE57B1FC7AC9300D03876 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,14 +370,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		515615138B01ADD769530870 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Veriface-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		678D5040962F4ECE9DE2EC6B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Veriface/Pods-Veriface-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8439A0710AB4FEA13047CFA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Veriface/Pods-Veriface-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Veriface/Pods-Veriface-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		663CE56C1FC7AC9300D03876 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663CE5781FC7AC9300D03876 /* ViewController.m in Sources */,
+				66C37F881FCFF6E00015F7D2 /* VFTopViewController.m in Sources */,
+				66C37F7F1FCFE02D0015F7D2 /* VFEmployeeViewController.m in Sources */,
+				66C37F8B1FCFF7220015F7D2 /* VFBottomViewController.m in Sources */,
+				66C37F851FCFF37C0015F7D2 /* VFRightViewController.m in Sources */,
+				66C37F7C1FCFB2710015F7D2 /* VFFrontViewController.m in Sources */,
+				669FF3BD1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m in Sources */,
 				663CE5831FC7AC9300D03876 /* main.m in Sources */,
+				6652C4481FCFA70700498458 /* NetManager.m in Sources */,
+				663CE5A91FC7C82D00D03876 /* VFBaseViewController.m in Sources */,
+				663CE5AC1FC7C86C00D03876 /* VFVeriFaceController.m in Sources */,
+				66C37F8F1FCFFEC00015F7D2 /* UIImage+Crop.m in Sources */,
 				663CE5751FC7AC9300D03876 /* AppDelegate.m in Sources */,
+				669FF3BA1FD126CA00EB29F3 /* NSDate+VFDate.m in Sources */,
+				66C37F821FCFF1060015F7D2 /* VFLeftViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,25 +480,6 @@
 			targetProxy = 663CE5941FC7AC9300D03876 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		663CE5791FC7AC9300D03876 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				663CE57A1FC7AC9300D03876 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		663CE57E1FC7AC9300D03876 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				663CE57F1FC7AC9300D03876 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		663CE59A1FC7AC9300D03876 /* Debug */ = {
@@ -370,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -419,7 +579,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -428,27 +588,39 @@
 		};
 		663CE59D1FC7AC9300D03876 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EEC0194B2B27C5B932E8781 /* Pods-Veriface.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TUKA9PCUN3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Veriface/PrefixHeader.pch";
 				INFOPLIST_FILE = Veriface/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.vancl.Veriface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		663CE59E1FC7AC9300D03876 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 072B893BD46D30495E3FA06D /* Pods-Veriface.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TUKA9PCUN3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Veriface/PrefixHeader.pch";
 				INFOPLIST_FILE = Veriface/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.vancl.Veriface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
