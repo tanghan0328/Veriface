@@ -32,24 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"面部图像采集";
-    
-    self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    self.noteLabel.backgroundColor = [UIColor whiteColor];
-    self.noteLabel.text = @"请抬头向下倾斜15度如图";
-    self.noteLabel.textColor = [UIColor blackColor];
-    self.noteLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.noteLabel];
-    
-    self.imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
-    self.imageView.image = [UIImage imageNamed:@""];
-    
-    [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(64);
-        make.height.mas_equalTo(50);
-    }];
-    [self.view addSubview:self.noteLabel];
-    
+    [self initHeader];
     [self initAVCaptureSession];
     [self createdTool];
 }
@@ -66,6 +49,26 @@
     if (self.session) {
         [self.session stopRunning];
     }
+}
+
+- (void)initHeader
+{
+    self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    self.noteLabel.backgroundColor = [UIColor whiteColor];
+    self.noteLabel.text = @"请抬头向下倾斜15度如图";
+    self.noteLabel.textColor = [UIColor blackColor];
+    self.noteLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.noteLabel];
+    
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+    self.imageView.image = [UIImage imageNamed:@""];
+    
+    [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(64);
+        make.height.mas_equalTo(50);
+    }];
+    [self.view addSubview:self.noteLabel];
 }
 
 - (void)createdTool
