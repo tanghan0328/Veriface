@@ -21,4 +21,8 @@
 //屏幕高度
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
+#ifndef __OPTIMIZE__
+#define SLog(...) printf("%f %s\n",[[NSDate date]timeIntervalSince1970],[[NSString stringWithFormat:__VA_ARGS__]UTF8String])
+#endif
+
 #endif /* PrefixHeader_pch */

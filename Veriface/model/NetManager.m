@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFNetworkActivityIndicatorManager.h"
 
-#define BASEAPPURLSTRING @"10.168.38.45"
+#define BASEAPPURLSTRING @"http://10.168.78.42:8080"
 
 @interface NetManager()
 
@@ -55,14 +55,18 @@
     }else{
         return;
     }
+     SLog(@"start request %@ ===HTTPRequestHeaders==%@====data==%@", path,_sessionManager.requestSerializer.HTTPRequestHeaders,data);
     [_sessionManager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
+        SLog(@"===data======%@",formData);
+        
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        SLog(@"end==headers=%@=======>response==post==>: %@",task.response, responseObject);
         [self succeedResponseWithResponseObject:responseObject Complete:complete];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self initSessionManager];
+        NSLog(@"====error==%@",error);
         [self failResponseWithError:error Complete:complete];
     }];
 }
@@ -70,6 +74,7 @@
 //请求正确封装
 - (void)succeedResponseWithResponseObject:(id) responseObject Complete:(void (^)(id object, NSError *error))complete
 {
+    SLog(@"response==post==>:\n %@",[self convertToJsonData: responseObject]);
     if (complete) {
         if ([[responseObject objectForKey:@"ok"] boolValue]) {
             complete([responseObject valueForKeyPath:@"data"], nil);
@@ -84,6 +89,7 @@
 //请求错误封装
 - (void)failResponseWithError:(NSError *) error Complete:(void (^)(id object, NSError *error))complete
 {
+    SLog(@"error=============>%@", error);
     if ([error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 429) {
         error = [NSError errorWithDomain:error.domain
                                     code:error.code
@@ -159,9 +165,9 @@
 
 -(void)requestAuthFaceWithData:(NSData *)data
                             complete:(void (^)(id object, NSError *error))complete {
-    [self filePostWithPath:@"/messenger/api/v2/auth.faceDetect"
+    [self filePostWithPath:@"/Test/returnSuccess"
                       data:data
-                      name:@"liveness_data"
+                      name:@"photo"
                 parameters:nil
                   complete:complete];
 }
@@ -173,7 +179,7 @@
                       complete:(void (^)(id object, NSError *error))complete {
     [self filePostWithPath:@"/messenger/api/v2/auth.faceDetect"
                       data:data
-                      name:@"liveness_data"
+                      name:@"photo"
                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:
                             name,@"employeeName",
                             employeeID,@"employeeID",
@@ -183,10 +189,11 @@
 
 //确认打卡
 -(void)requestAuthFaceWithResult:(BOOL) confirm
+                      employeeID:(NSString *)employeeID
                         complete:(void (^)(id object, NSError *error))complete
 {
     [self requestWithMethod:@"POST"
-                        url:@""
+                        url:@"/Test/returnSuccess"
                  parameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:confirm],@"confirm", nil]
                    complete:complete];
 }
@@ -202,6 +209,19 @@
     }else{
         return nil;
     }
+}
+
+-(NSString *)convertToJsonData:(NSDictionary *)dict
+{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString;
+    if (!jsonData) {
+        NSLog(@"%@",error);
+    }else{
+        jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return jsonString;
 }
 
 @end

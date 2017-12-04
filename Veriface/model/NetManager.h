@@ -20,6 +20,7 @@
 
 //确认打卡
 -(void)requestAuthFaceWithResult:(BOOL) confirm
+                      employeeID:(NSString *)employeeID
                       complete:(void (^)(id object, NSError *error))complete;
 
 //录入员工面部信息

@@ -34,6 +34,10 @@
 @property (nonatomic, strong) UIBarButtonItem *rightItem;
 @property (nonatomic, strong) UIImageView *scanView;
 @property (nonatomic, strong) UIImageView *centerView;
+@property (nonatomic, strong) NSString *employeeID;
+@property (nonatomic, strong) NSString *employeeName;
+
+
 @end
 
 @implementation VFVeriFaceController
@@ -71,9 +75,16 @@
     if (self.session) {
         [self.session startRunning];
     }
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     //动态加载扫描
 //    [self animationView];
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -211,11 +222,15 @@
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:_stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         //向服务器发送请求
-//        [[NetManager sharedManager]requestAuthFaceWithData:jpegData complete:^(id object, NSError *error) {
-//            if(error){
-//                //TODO  错误显示
-//            }
-//        }];
+        [[NetManager sharedManager]requestAuthFaceWithData:jpegData complete:^(id object, NSError *error) {
+            if(error){
+                //TODO  错误显示
+                return;
+            }
+            //取出用户的工号
+            _employeeID = [object valueForKey:@"employeeID"];
+            _employeeName = [object valueForKey:@"employeeName"];
+        }];
         //向打卡用户确认
         [self showAlert];
     }];
@@ -243,7 +258,8 @@
 //最后请求确认打卡
 - (void)requestConfrimResult:(BOOL)confrim
 {
-    [[NetManager sharedManager]requestAuthFaceWithResult:confrim complete:^(id object, NSError *error) {
+    [[NetManager sharedManager]requestAuthFaceWithResult:confrim employeeID:_employeeID complete:^(id object, NSError *error) {
+        
         
     }];
 }
