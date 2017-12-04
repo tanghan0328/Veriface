@@ -12,6 +12,8 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
 #import "UIImageView+WebCache.h"
+#import "UIImage+Crop.h"
+#import "UIColor+VFColor.h"
 
 
 //屏幕宽度

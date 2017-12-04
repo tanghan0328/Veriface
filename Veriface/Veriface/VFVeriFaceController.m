@@ -40,11 +40,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.8]] forBarMetrics:UIBarMetricsDefault];
     _leftItem =[[UIBarButtonItem alloc]initWithTitle:[NSDate nowdateToString] style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.leftBarButtonItem = _leftItem;
-    _rightItem =  [[UIBarButtonItem alloc]initWithTitle:@"图像录入" style:UIBarButtonItemStylePlain target:self action:@selector(imagePoint)];
+    _rightItem =  [[UIBarButtonItem alloc]initWithTitle:@"图像录入 >" style:UIBarButtonItemStylePlain target:self action:@selector(imagePoint)];
     self.navigationItem.rightBarButtonItem = _rightItem;
     
     [_leftItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
@@ -57,7 +57,7 @@
     __weak typeof(self) weakSelf = self;
     _timer = [NSTimer tw_scheduledTimerWithTimeInterval:1.0 block:^{
         __strong typeof(self) strongSelf = weakSelf;
-        strongSelf.navigationItem.title = [NSDate nowdateHHToString];
+        strongSelf.title = [NSDate nowdateHHToString];
         strongSelf.leftItem.title = [NSDate nowdateToString];
     } repeats:YES];
 }
@@ -65,7 +65,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    self.title = [NSDate nowdateToString];
+    self.title = [NSDate nowdateHHToString];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Medium" size:22],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     if (self.session) {
         [self.session startRunning];
     }
@@ -88,6 +89,7 @@
     self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
     self.noteLabel.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:133.0f/255.0f blue:201.0f/255.0f alpha:1];
     self.noteLabel.text = @"您好，请目视前方";
+    self.noteLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:22];
     self.noteLabel.textAlignment = NSTextAlignmentCenter;
     self.noteLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:self.noteLabel];
@@ -102,13 +104,17 @@
 - (void)createdTool
 {
     self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 120, SCREEN_WIDTH, 120)];
-    self.toolView.backgroundColor = [UIColor blackColor];
+    self.toolView.backgroundColor = [UIColor whiteColor];
     self.toolView.alpha = 0.8;
     [self.view addSubview:self.toolView];
     
     UIButton *cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cameraBtn.frame = CGRectMake((SCREEN_WIDTH - 50)/2.0, (120 - 50)/ 2.0, 50, 50);
-    [cameraBtn setImage:[UIImage imageNamed:@"takePhoto"] forState:UIControlStateNormal];
+    cameraBtn.frame = CGRectMake((SCREEN_WIDTH - 160)/2.0, (120 - 50)/ 2.0, 160, 50);
+//    [cameraBtn setImage:[UIImage imageNamed:@"takePhoto"] forState:UIControlStateNormal];
+    [cameraBtn setTitle:@"拍照" forState:UIControlStateNormal];
+    cameraBtn.backgroundColor = [UIColor blueSky];
+    cameraBtn.layer.cornerRadius = 25.0f;
+    cameraBtn.layer.masksToBounds = YES;
     [cameraBtn addTarget:self action:@selector(takePhotoButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.toolView addSubview:cameraBtn];
     //没有闪光灯

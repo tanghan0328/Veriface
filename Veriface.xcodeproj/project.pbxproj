@@ -15,6 +15,7 @@
 		663CE5A91FC7C82D00D03876 /* VFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5A81FC7C82D00D03876 /* VFBaseViewController.m */; };
 		663CE5AC1FC7C86C00D03876 /* VFVeriFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663CE5AB1FC7C86C00D03876 /* VFVeriFaceController.m */; };
 		6652C4481FCFA70700498458 /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6652C4471FCFA70700498458 /* NetManager.m */; };
+		6670A86A1FD5244E00372739 /* UIColor+VFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A8691FD5244E00372739 /* UIColor+VFColor.m */; };
 		669FF3BA1FD126CA00EB29F3 /* NSDate+VFDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */; };
 		669FF3BD1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 669FF3BC1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m */; };
 		66C37F7C1FCFB2710015F7D2 /* VFFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C37F7B1FCFB2710015F7D2 /* VFFrontViewController.m */; };
@@ -66,6 +67,8 @@
 		663CE5AB1FC7C86C00D03876 /* VFVeriFaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VFVeriFaceController.m; sourceTree = "<group>"; };
 		6652C4461FCFA70700498458 /* NetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
 		6652C4471FCFA70700498458 /* NetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
+		6670A8681FD5244E00372739 /* UIColor+VFColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+VFColor.h"; sourceTree = "<group>"; };
+		6670A8691FD5244E00372739 /* UIColor+VFColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VFColor.m"; sourceTree = "<group>"; };
 		669FF3B81FD126CA00EB29F3 /* NSDate+VFDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+VFDate.h"; sourceTree = "<group>"; };
 		669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VFDate.m"; sourceTree = "<group>"; };
 		669FF3BB1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+VFUsingTimer.h"; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				669FF3B91FD126CA00EB29F3 /* NSDate+VFDate.m */,
 				669FF3BB1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.h */,
 				669FF3BC1FD12D1300EB29F3 /* NSTimer+VFUsingTimer.m */,
+				6670A8681FD5244E00372739 /* UIColor+VFColor.h */,
+				6670A8691FD5244E00372739 /* UIColor+VFColor.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				663CE5AC1FC7C86C00D03876 /* VFVeriFaceController.m in Sources */,
 				66C37F8F1FCFFEC00015F7D2 /* UIImage+Crop.m in Sources */,
 				663CE5751FC7AC9300D03876 /* AppDelegate.m in Sources */,
+				6670A86A1FD5244E00372739 /* UIColor+VFColor.m in Sources */,
 				669FF3BA1FD126CA00EB29F3 /* NSDate+VFDate.m in Sources */,
 				66C37F821FCFF1060015F7D2 /* VFLeftViewController.m in Sources */,
 			);
