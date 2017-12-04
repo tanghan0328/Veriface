@@ -15,8 +15,8 @@
 @property (nonatomic, strong) AVCaptureDeviceInput* videoInput;
 @property (nonatomic, strong) AVCaptureStillImageOutput* stillImageOutput;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer* previewLayer;
-@property(nonatomic,assign)CGFloat beginGestureScale;
-@property(nonatomic,assign)CGFloat effectiveScale;
+@property (nonatomic, assign) CGFloat beginGestureScale;
+@property (nonatomic, assign) CGFloat effectiveScale;
 @property (nonatomic, strong) AVCaptureConnection *stillImageConnection;
 @property (nonatomic, strong) NSData  *jpegData;
 @property (nonatomic, assign) CFDictionaryRef attachments;

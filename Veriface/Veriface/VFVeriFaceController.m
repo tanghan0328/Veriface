@@ -10,6 +10,7 @@
 #import "VFEmployeeViewController.h"
 #import "NSDate+VFDate.h"
 #import "NSTimer+VFUsingTimer.h"
+#import "UIImage+Crop.h"
 
 @interface VFVeriFaceController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -17,8 +18,8 @@
 @property (nonatomic, strong) AVCaptureDeviceInput* videoInput;
 @property (nonatomic, strong) AVCaptureStillImageOutput* stillImageOutput;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer* previewLayer;
-@property(nonatomic,assign)CGFloat beginGestureScale;
-@property(nonatomic,assign)CGFloat effectiveScale;
+@property (nonatomic, assign) CGFloat beginGestureScale;
+@property (nonatomic, assign) CGFloat effectiveScale;
 @property (nonatomic, strong) AVCaptureConnection *stillImageConnection;
 @property (nonatomic, strong) NSData  *jpegData;
 @property (nonatomic, assign) CFDictionaryRef attachments;
@@ -29,6 +30,8 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLable;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UIBarButtonItem *leftItem;
+@property (nonatomic, strong) UIBarButtonItem *rightItem;
 
 @end
 
@@ -36,24 +39,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.8]] forBarMetrics:UIBarMetricsDefault];
+    _leftItem =[[UIBarButtonItem alloc]initWithTitle:[NSDate nowdateToString] style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.leftBarButtonItem = _leftItem;
+    _rightItem =  [[UIBarButtonItem alloc]initWithTitle:@"图像录入" style:UIBarButtonItemStylePlain target:self action:@selector(imagePoint)];
+    self.navigationItem.rightBarButtonItem = _rightItem;
+    
+    [_leftItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    [_rightItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+
+    [self initHeader];
     [self initAVCaptureSession];
     [self createdTool];
     
     __weak typeof(self) weakSelf = self;
-    _timer = [NSTimer tw_scheduledTimerWithTimeInterval:1.0
-                                                  block:^{
-                                                      __strong typeof(self) strongSelf = weakSelf;
-                                                      strongSelf.titleLable.text = [NSDate nowdateToString];
-                                                  }
-                                                repeats:YES];
-
+    _timer = [NSTimer tw_scheduledTimerWithTimeInterval:1.0 block:^{
+        __strong typeof(self) strongSelf = weakSelf;
+        strongSelf.navigationItem.title = [NSDate nowdateHHToString];
+        strongSelf.leftItem.title = [NSDate nowdateToString];
+    } repeats:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     self.title = [NSDate nowdateToString];
-    self.navigationController.navigationBar.hidden = YES;
     if (self.session) {
         [self.session startRunning];
     }
@@ -62,7 +74,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -72,26 +83,42 @@
     }
 }
 
+- (void)initHeader
+{
+    self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    self.noteLabel.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:133.0f/255.0f blue:201.0f/255.0f alpha:1];
+    self.noteLabel.text = @"您好，请目视前方";
+    self.noteLabel.textAlignment = NSTextAlignmentCenter;
+    self.noteLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.noteLabel];
+    
+    [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(64);
+        make.height.mas_equalTo(50);
+    }];
+}
+
 - (void)createdTool
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-    headerView.backgroundColor = [UIColor blackColor];
-    headerView.alpha = 0.8;
-    [self.view addSubview:headerView];
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+//    headerView.backgroundColor = [UIColor blackColor];
+//    headerView.alpha = 0.8;
+//    [self.view addSubview:headerView];
+//
+//    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 360)/2.0, 10, 360, 44)];
+//    titleLable.text =  [NSDate nowdateToString];
+//    titleLable.font = [UIFont systemFontOfSize:24];
+//    [titleLable setTextColor:[UIColor whiteColor]];
+//    titleLable.textAlignment = NSTextAlignmentCenter;
+//    _titleLable = titleLable;
+//    [headerView addSubview:titleLable];
     
-    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 360)/2.0, 10, 360, 44)];
-    titleLable.text =  [NSDate nowdateToString];
-    titleLable.font = [UIFont systemFontOfSize:24];
-    [titleLable setTextColor:[UIColor whiteColor]];
-    titleLable.textAlignment = NSTextAlignmentCenter;
-    _titleLable = titleLable;
-    [headerView addSubview:titleLable];
-    
-    UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    headerBtn.frame = CGRectMake(SCREEN_WIDTH -  80 - 15, 12, 80, 40);
-    [headerBtn setTitle:@"图像录入" forState:UIControlStateNormal];
-    [headerBtn addTarget:self action:@selector(imagePoint) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:headerBtn];
+//    UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    headerBtn.frame = CGRectMake(SCREEN_WIDTH -  80 - 15, 12, 80, 40);
+//    [headerBtn setTitle:@"图像录入" forState:UIControlStateNormal];
+//    [headerBtn addTarget:self action:@selector(imagePoint) forControlEvents:UIControlEventTouchUpInside];
+//    [headerView addSubview:headerBtn];
     
     self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 120, SCREEN_WIDTH, 120)];
     self.toolView.backgroundColor = [UIColor blackColor];
@@ -142,7 +169,7 @@
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    self.previewLayer.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.previewLayer.frame = CGRectMake(0, 114,SCREEN_WIDTH, SCREEN_HEIGHT-114);
     self.view.layer.masksToBounds = YES;
     [self.view.layer addSublayer:self.previewLayer];
     
@@ -165,12 +192,10 @@
 //照相
 - (void)takePhotoButtonClick {
     _stillImageConnection = [self.stillImageOutput  connectionWithMediaType:AVMediaTypeVideo];
-    
     UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
     AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
     [_stillImageConnection setVideoOrientation:avcaptureOrientation];
     [_stillImageConnection setVideoScaleAndCropFactor:self.effectiveScale];
-    
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:_stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         //向服务器发送请求
@@ -188,10 +213,10 @@
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"工号ID10000姓名糖糖打卡成功" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *wrongAlert = [UIAlertAction actionWithTitle:@"打卡错误" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+        //[self requestConfrimResult:NO];
     }];
-    UIAlertController *rightAlert = [UIAlertAction actionWithTitle:@"确认无误" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+    UIAlertAction *rightAlert = [UIAlertAction actionWithTitle:@"确认无误" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //[self requestConfrimResult:YES];
     }];
     [alert addAction:wrongAlert];
     [alert addAction:rightAlert];
@@ -201,7 +226,7 @@
     popPresenter.sourceRect = CGRectMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 1, 1);
     [self presentViewController:alert animated:YES completion:nil];
 }
-
+//最后请求确认打卡
 - (void)requestConfrimResult:(BOOL)confrim
 {
     [[NetManager sharedManager]requestAuthFaceWithResult:confrim complete:^(id object, NSError *error) {

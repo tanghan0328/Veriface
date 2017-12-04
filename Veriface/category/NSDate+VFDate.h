@@ -12,4 +12,7 @@
 
 + (NSString *)nowdateToString;
 
+//获取当前时间 时分秒
++ (NSString *)nowdateHHToString;
+
 @end
