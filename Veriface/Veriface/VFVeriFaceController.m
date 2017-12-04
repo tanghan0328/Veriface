@@ -82,7 +82,7 @@
         [self.session stopRunning];
     }
 }
-
+//创建头部信息
 - (void)initHeader
 {
     self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
@@ -98,28 +98,9 @@
         make.height.mas_equalTo(50);
     }];
 }
-
+//创建下部拍照
 - (void)createdTool
 {
-//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-//    headerView.backgroundColor = [UIColor blackColor];
-//    headerView.alpha = 0.8;
-//    [self.view addSubview:headerView];
-//
-//    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 360)/2.0, 10, 360, 44)];
-//    titleLable.text =  [NSDate nowdateToString];
-//    titleLable.font = [UIFont systemFontOfSize:24];
-//    [titleLable setTextColor:[UIColor whiteColor]];
-//    titleLable.textAlignment = NSTextAlignmentCenter;
-//    _titleLable = titleLable;
-//    [headerView addSubview:titleLable];
-    
-//    UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    headerBtn.frame = CGRectMake(SCREEN_WIDTH -  80 - 15, 12, 80, 40);
-//    [headerBtn setTitle:@"图像录入" forState:UIControlStateNormal];
-//    [headerBtn addTarget:self action:@selector(imagePoint) forControlEvents:UIControlEventTouchUpInside];
-//    [headerView addSubview:headerBtn];
-    
     self.toolView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 120, SCREEN_WIDTH, 120)];
     self.toolView.backgroundColor = [UIColor blackColor];
     self.toolView.alpha = 0.8;
@@ -213,9 +194,11 @@
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"工号ID10000姓名糖糖打卡成功" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *wrongAlert = [UIAlertAction actionWithTitle:@"打卡错误" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //TODO  网络请求打卡确认
         //[self requestConfrimResult:NO];
     }];
     UIAlertAction *rightAlert = [UIAlertAction actionWithTitle:@"确认无误" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //TODO  网络请求打卡确认
         //[self requestConfrimResult:YES];
     }];
     [alert addAction:wrongAlert];
