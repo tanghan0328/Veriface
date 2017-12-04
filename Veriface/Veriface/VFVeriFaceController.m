@@ -32,7 +32,8 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UIBarButtonItem *leftItem;
 @property (nonatomic, strong) UIBarButtonItem *rightItem;
-
+@property (nonatomic, strong) UIImageView *scanView;
+@property (nonatomic, strong) UIImageView *centerView;
 @end
 
 @implementation VFVeriFaceController
@@ -70,6 +71,8 @@
     if (self.session) {
         [self.session startRunning];
     }
+    //动态加载扫描
+//    [self animationView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -124,6 +127,28 @@
 //    [lampBtn setImage:[UIImage imageNamed:@"closeFlish"] forState:UIControlStateNormal];
 //    [lampBtn addTarget:self action:@selector(flashButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.toolView addSubview:lampBtn];
+    
+    //添加扫描框
+    UIImageView *centerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"qrcode_border"]];
+    centerImageView.frame = CGRectZero;
+    _centerView = centerImageView;
+    [self.view addSubview:centerImageView];
+    
+    [centerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(450, 450));
+    }];
+    
+    //添加扫描框
+    _scanView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"qrcode_scanline_barcode"]];
+    _scanView.frame = CGRectZero;
+    [self.view addSubview:_scanView];
+    
+    [_scanView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_centerView);
+        make.bottom.equalTo(_centerView.mas_top);
+        make.width.mas_equalTo(450);
+    }];
 }
 
 - (void)initAVCaptureSession{
@@ -364,4 +389,20 @@
     [self.navigationController pushViewController:front animated:YES];
 }
 
+- (void)animationView
+{
+    [UIView animateWithDuration:1.0f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView setAnimationRepeatCount:MAXFLOAT];
+        [_scanView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_centerView.mas_top);
+        }];
+//        [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        [_scanView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_centerView);
+        }];
+//        [self.view layoutIfNeeded];
+    }];
+}
 @end
