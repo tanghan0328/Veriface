@@ -216,7 +216,7 @@
         return;
     }
     if(self.employeeIDTextFiled.text && self.employeeIDTextFiled.text.length >0){
-        [userDefaults setObject:self.employeeIDTextFiled.text forKey:@"empoyeeID"];
+        [userDefaults setObject:self.employeeIDTextFiled.text forKey:@"employeeID"];
     }else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"请填写员工ID" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *nameAlert = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -244,7 +244,7 @@
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:@"employeeName"];
-    [userDefaults removeObjectForKey:@"empoyeeID"];
+    [userDefaults removeObjectForKey:@"employeeID"];
     [userDefaults synchronize];
 }
 

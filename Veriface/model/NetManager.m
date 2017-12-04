@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFNetworkActivityIndicatorManager.h"
 
-#define BASEAPPURLSTRING @"http://10.168.78.42:8080"
+#define BASEAPPURLSTRING @"http://10.168.36.202:8080/"
 
 @interface NetManager()
 
@@ -55,7 +55,8 @@
     }else{
         return;
     }
-     SLog(@"start request %@ ===HTTPRequestHeaders==%@====data==%@", path,_sessionManager.requestSerializer.HTTPRequestHeaders,data);
+    [self initSessionManager];
+     SLog(@"start request %@ ========%@==HTTPRequestHeaders==%@====data==%@", parameters,path,_sessionManager.requestSerializer.HTTPRequestHeaders,data);
     [_sessionManager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
         SLog(@"===data======%@",formData);
@@ -66,7 +67,7 @@
         SLog(@"end==headers=%@=======>response==post==>: %@",task.response, responseObject);
         [self succeedResponseWithResponseObject:responseObject Complete:complete];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"====error==%@",error);
+        SLog(@"====error==%@",error);
         [self failResponseWithError:error Complete:complete];
     }];
 }
@@ -124,7 +125,7 @@
     }else{
         return;
     }
-    
+    [self initSessionManager];
     if([method.uppercaseString isEqualToString:@"POST"]){
         [_sessionManager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
             
@@ -177,13 +178,13 @@
                     employeeID:(NSString *)employeeID
                    photoNumber:(int)photoNumber
                       complete:(void (^)(id object, NSError *error))complete {
-    [self filePostWithPath:@"/messenger/api/v2/auth.faceDetect"
+    [self filePostWithPath:@"/Face/RegistFace"
                       data:data
                       name:@"photo"
                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:
                             name,@"employeeName",
                             employeeID,@"employeeID",
-                            photoNumber,@"photoNumber",nil]
+                            [NSNumber numberWithInt:photoNumber],@"photoNumber",nil]
                   complete:complete];
 }
 

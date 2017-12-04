@@ -165,10 +165,11 @@
         NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         //向服务器发送请求
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//        [[NetManager sharedManager]requestLoadFaceWithData:jpegData name:[userDefaults valueForKey:@"employeeName"] employeeID:[userDefaults valueForKey:@"employeeID"] photoNumber:1 complete:^(id object, NSError *error) {
-            VFLeftViewController *left = [[VFLeftViewController alloc]init];
-            [self.navigationController pushViewController:left animated:YES];
-//        }];
+        NSLog(@"====%@=========%@=========",[userDefaults valueForKey:@"employeeName"],[userDefaults valueForKey:@"employeeID"]);
+        [[NetManager sharedManager]requestLoadFaceWithData:jpegData name:[userDefaults valueForKey:@"employeeName"] employeeID:[userDefaults valueForKey:@"employeeID"] photoNumber:1 complete:^(id object, NSError *error) {
+//            VFLeftViewController *left = [[VFLeftViewController alloc]init];
+//            [self.navigationController pushViewController:left animated:YES];
+        }];
     }];
 }
 
