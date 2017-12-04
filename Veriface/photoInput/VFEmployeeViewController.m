@@ -7,6 +7,7 @@
 //
 #import "VFEmployeeViewController.h"
 #import "VFFrontViewController.h"
+#import "UIImage+Crop.h"
 
 @interface VFEmployeeViewController ()
 
@@ -25,103 +26,162 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"信息录入";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.8]] forBarMetrics:UIBarMetricsDefault];
     
     UIBarButtonItem *item =[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonSystemItemCancel target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = item;
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+    imageView.image = [UIImage imageNamed:@"takePhoto"];
+    [self.view addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(150, 150));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(150);
+    }];
+    
     self.centerView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.centerView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.centerView];
+    
     [self.centerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(100);
         make.right.equalTo(self.view).with.offset(-100);
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(200);
+        make.top.equalTo(imageView.mas_bottom).with.offset(50);
         make.height.mas_equalTo(300);
     }];
     
     self.nameLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    self.nameLabel.text = @"姓名";
-    self.nameLabel.font = [UIFont systemFontOfSize:22];
+    self.nameLabel.text = @"请输入您的姓名";
+    self.nameLabel.hidden = YES;
+    self.nameLabel.font = [UIFont systemFontOfSize:12];
     [self.centerView addSubview:self.nameLabel];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.centerView).with.offset(20);
-        make.width.mas_equalTo(80);
+        make.right.equalTo(self.centerView).with.offset(-20);
         make.top.equalTo(self.centerView).with.offset(20);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(20);
     }];
     
     self.nameTextFiled = [[UITextField alloc]initWithFrame:CGRectZero];
     self.nameTextFiled.backgroundColor = [UIColor whiteColor];
     self.nameTextFiled.font = [UIFont systemFontOfSize:22];
+    self.nameTextFiled.placeholder = @"请输入您的姓名";
     [self.centerView addSubview:self.nameTextFiled];
     
     [self.nameTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.centerView).with.offset(20);
-        make.left.equalTo(self.nameLabel.mas_right).with.offset(20);
+        make.top.equalTo(self.centerView).with.offset(40);
+        make.left.equalTo(self.centerView).with.offset(20);
         make.right.equalTo(self.centerView).with.offset(-20);
         make.height.mas_equalTo(50);
     }];
     
+    UILabel *rightLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    rightLabel.text = @"*";
+    rightLabel.textColor = [UIColor redColor];
+    [self.centerView addSubview:rightLabel];
+    [rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.nameTextFiled);
+        make.left.equalTo(self.nameTextFiled.mas_right);
+        make.right.equalTo(self.centerView);
+    }];
+    
+    UIView *borderView = [[UIView alloc]initWithFrame:CGRectZero];
+    borderView.backgroundColor = [UIColor blueColor];
+    [self.centerView addSubview:borderView];
+    
+    [borderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(1);
+        make.left.equalTo(self.centerView).with.offset(20);
+        make.right.equalTo(self.centerView).with.offset(-20);
+        make.top.equalTo(self.nameTextFiled.mas_bottom);
+    }];
+    
+    
     self.employeeIDLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    self.employeeIDLabel.text = @"工号";
-    self.employeeIDLabel.font = [UIFont systemFontOfSize:22];
+    self.employeeIDLabel.text = @"请输入您的工号";
+    self.employeeIDLabel.font = [UIFont systemFontOfSize:12];
+    self.employeeIDLabel.hidden = YES;
     [self.centerView addSubview:self.employeeIDLabel];
     
     [self.employeeIDLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.centerView).with.offset(20);
-        make.width.mas_equalTo(80);
+        make.right.equalTo(self.centerView).with.offset(-20);
         make.top.equalTo(self.centerView).with.offset(90);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(20);
     }];
     
     self.employeeIDTextFiled = [[UITextField alloc]initWithFrame:CGRectZero];
     self.employeeIDTextFiled.backgroundColor = [UIColor whiteColor];
     self.employeeIDTextFiled.font = [UIFont systemFontOfSize:22];
+    self.employeeIDTextFiled.placeholder = @"请输入您的工号";
     self.employeeIDTextFiled.keyboardType = UIKeyboardTypePhonePad;
     [self.centerView addSubview:self.employeeIDTextFiled];
     
     [self.employeeIDTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.centerView).with.offset(90);
-        make.left.equalTo(self.nameLabel.mas_right).with.offset(20);
+        make.top.equalTo(self.employeeIDLabel.mas_bottom).with.offset(10);
+        make.left.equalTo(self.centerView).with.offset(20);
         make.right.equalTo(self.centerView).with.offset(-20);
         make.height.mas_equalTo(50);
+    }];
+    
+    UILabel *secrightLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    secrightLabel.text = @"*";
+    secrightLabel.textColor = [UIColor redColor];
+    [self.centerView addSubview:secrightLabel];
+    [secrightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.employeeIDTextFiled);
+        make.left.equalTo(self.employeeIDTextFiled.mas_right);
+        make.right.equalTo(self.centerView);
+    }];
+    
+    UIView *secborderView = [[UIView alloc]initWithFrame:CGRectZero];
+    secborderView.backgroundColor = [UIColor blueColor];
+    [self.centerView addSubview:secborderView];
+    [secborderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(1);
+        make.left.equalTo(self.centerView).with.offset(20);
+        make.right.equalTo(self.centerView).with.offset(-20);
+        make.top.equalTo(self.employeeIDTextFiled.mas_bottom);
     }];
     
     self.confrimBtn = [[UIButton alloc]initWithFrame:CGRectZero];
     [self.confrimBtn setTitle:@"确认" forState:UIControlStateNormal];
     [self.confrimBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.confrimBtn.backgroundColor = [UIColor blueColor];
-    self.confrimBtn.layer.cornerRadius = 4.0f;
+    self.confrimBtn.layer.cornerRadius = 25.0f;
     self.confrimBtn.layer.masksToBounds = YES;
     [self.confrimBtn addTarget:self action:@selector(onConfirmClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.centerView addSubview:self.confrimBtn];
     
     [self.confrimBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.centerView).with.offset(50);
+        make.left.equalTo(self.centerView).with.offset(20);
+        make.right.equalTo(self.centerView).with.offset(-20);
         make.bottom.equalTo(self.centerView).with.offset(-30);
-        make.width.mas_offset(200);
         make.height.mas_equalTo(50);
     }];
     
-    self.cancleBtn = [[UIButton alloc]initWithFrame:CGRectZero];
-    [self.cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [self.cancleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.cancleBtn.backgroundColor = [UIColor whiteColor];
-    self.cancleBtn.layer.cornerRadius = 4.0f;
-    self.cancleBtn.layer.masksToBounds = YES;
-    [self.cancleBtn addTarget:self action:@selector(onCancleClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.centerView addSubview:self.cancleBtn];
-
-    [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.centerView).with.offset(-50);
-        make.bottom.equalTo(self.centerView).with.offset(-30);
-        make.width.mas_offset(200);
-        make.height.mas_equalTo(50);
-        
-    }];
+//    self.cancleBtn = [[UIButton alloc]initWithFrame:CGRectZero];
+//    [self.cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
+//    [self.cancleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    self.cancleBtn.backgroundColor = [UIColor whiteColor];
+//    self.cancleBtn.layer.cornerRadius = 4.0f;
+//    self.cancleBtn.layer.masksToBounds = YES;
+//    [self.cancleBtn addTarget:self action:@selector(onCancleClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.centerView addSubview:self.cancleBtn];
+//
+//    [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.centerView).with.offset(-50);
+//        make.bottom.equalTo(self.centerView).with.offset(-30);
+//        make.width.mas_offset(200);
+//        make.height.mas_equalTo(50);
+//
+//    }];
 }
 
 - (void)back

@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"面部图像采集";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self initHeader];
     [self initAVCaptureSession];
     [self createdTool];
@@ -63,7 +65,7 @@
 
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
     self.imageView.image = [UIImage imageNamed:@""];
-    
+
     [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view).with.offset(64);

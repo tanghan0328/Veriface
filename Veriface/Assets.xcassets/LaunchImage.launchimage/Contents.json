@@ -3,7 +3,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "QQ20171130-171658@2xiPadPortraitiOS789_768x1024pt.png",
+      "filename" : "LanuchiPadPortraitiOS789_768x1024pt.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "1x"
@@ -11,9 +11,23 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "QQ20171130-171658@2xiPadPortraitiOS789_768x1024pt@2x.png",
+      "filename" : "LanuchiPadPortraitiOS789_768x1024pt@2x.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "scale" : "2x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "ipad",
+      "filename" : "LanuchiPadPortraitiOS56_768x1024pt.png",
+      "extent" : "full-screen",
+      "scale" : "1x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "ipad",
+      "filename" : "LanuchiPadPortraitiOS56_768x1024pt@2x.png",
+      "extent" : "full-screen",
       "scale" : "2x"
     }
   ],
