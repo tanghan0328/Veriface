@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"面部图像采集";
+    [self initBack];
     [self initHeader];
     [self initAVCaptureSession];
     [self createdTool];
@@ -58,21 +59,28 @@
 - (void)initHeader
 {
     self.noteLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    self.noteLabel.backgroundColor = [UIColor whiteColor];
+    self.noteLabel.backgroundColor = [UIColor colorWithRed:57.0f/255.0f green:133.0f/255.0f blue:201.0f/255.0f alpha:1];
     self.noteLabel.text = @"请将头向右倾斜15度如图";
+    self.noteLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:22];
     self.noteLabel.textAlignment = NSTextAlignmentCenter;
-    self.noteLabel.textColor = [UIColor blackColor];
-    [self.view addSubview:self.noteLabel];
+    self.noteLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.noteLabel];\
     
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
-    self.imageView.image = [UIImage imageNamed:@""];
+    self.imageView.image = [UIImage imageNamed:@"left"];
+    [self.view addSubview:self.imageView];
     
     [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view).with.offset(64);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(80);
     }];
-    [self.view addSubview:self.noteLabel];
+    
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.noteLabel);
+        make.centerX.equalTo(self.noteLabel).with.offset(160);
+        make.size.mas_equalTo(CGSizeMake(70, 70));
+    }];
 }
 
 - (void)createdTool
@@ -134,10 +142,10 @@
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    self.previewLayer.frame = CGRectMake(0, 114,SCREEN_WIDTH, SCREEN_HEIGHT-114);
+    self.previewLayer.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
     self.view.layer.masksToBounds = YES;
-    [self.view.layer addSublayer:self.previewLayer];
-    
+    [self.view.layer insertSublayer:self.previewLayer atIndex:0];
+
     [self resetFocusAndExposureModes];
 }
 

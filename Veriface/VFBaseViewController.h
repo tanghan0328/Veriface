@@ -13,4 +13,7 @@
 
 @interface VFBaseViewController : UIViewController
 
+- (void)initBack;
+- (void)back;
+
 @end

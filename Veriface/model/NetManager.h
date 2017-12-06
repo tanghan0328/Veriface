@@ -29,4 +29,6 @@
                     employeeID:(NSString *)employeeID
                    photoNumber:(int)photoNumber
                       complete:(void (^)(id object, NSError *error))complete;
+
+- (void)requestAAA;
 @end

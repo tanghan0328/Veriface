@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFNetworkActivityIndicatorManager.h"
 
-#define BASEAPPURLSTRING @"http://10.168.36.202:8080/"
+#define BASEAPPURLSTRING @"http://10.168.78.42:8080/"
 
 @interface NetManager()
 
@@ -56,6 +56,8 @@
         return;
     }
     [self initSessionManager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
      SLog(@"start request %@ ========%@==HTTPRequestHeaders==%@====data==%@", parameters,path,_sessionManager.requestSerializer.HTTPRequestHeaders,data);
     [_sessionManager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
@@ -166,7 +168,7 @@
 
 -(void)requestAuthFaceWithData:(NSData *)data
                             complete:(void (^)(id object, NSError *error))complete {
-    [self filePostWithPath:@"/Test/returnSuccess"
+    [self filePostWithPath:@"/uploadimgctlr"
                       data:data
                       name:@"photo"
                 parameters:nil
@@ -182,9 +184,9 @@
                       data:data
                       name:@"photo"
                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                            name,@"employeeName",
+                            @"123",@"employeeName",
                             employeeID,@"employeeID",
-                            [NSNumber numberWithInt:photoNumber],@"photoNumber",nil]
+                            [NSNumber numberWithInt:photoNumber],@"photonumber",nil]
                   complete:complete];
 }
 
@@ -223,6 +225,16 @@
         jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
     return jsonString;
+}
+
+- (void)requestAAA
+{
+    [self requestWithMethod:@"POST" url:@"/Face/RegistFace" parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                        @"11222",@"employeeName",
+                                                        @"99999",@"employeeID",nil]
+                   complete:^(id object, NSError *error) {
+                       NSLog(@"发送=====》");
+    }];
 }
 
 @end

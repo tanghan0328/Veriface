@@ -106,13 +106,24 @@
     self.noteLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:22];
     self.noteLabel.textAlignment = NSTextAlignmentCenter;
     self.noteLabel.textColor = [UIColor whiteColor];
-    [self.view addSubview:self.noteLabel];
+    [self.view addSubview:self.noteLabel];\
+    
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+    self.imageView.image = [UIImage imageNamed:@"front"];
+    [self.view addSubview:self.imageView];
     
     [self.noteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view).with.offset(64);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(80);
     }];
+    
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.noteLabel);
+        make.centerX.equalTo(self.noteLabel).with.offset(130);
+        make.size.mas_equalTo(CGSizeMake(70, 70));
+    }];
+
 }
 //创建下部拍照
 - (void)createdTool
@@ -192,10 +203,10 @@
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    self.previewLayer.frame = CGRectMake(0, 114,SCREEN_WIDTH, SCREEN_HEIGHT-114);
+    self.previewLayer.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
     self.view.layer.masksToBounds = YES;
-    [self.view.layer addSublayer:self.previewLayer];
-    
+    [self.view.layer insertSublayer:self.previewLayer atIndex:0];
+
     [self resetFocusAndExposureModes];
 }
 
@@ -231,8 +242,9 @@
             _employeeID = [object valueForKey:@"employeeID"];
             _employeeName = [object valueForKey:@"employeeName"];
         }];
+//        [[NetManager sharedManager]requestAAA];
         //向打卡用户确认
-        [self showAlert];
+//        [self showAlert];
     }];
 }
 
