@@ -180,13 +180,13 @@
                     employeeID:(NSString *)employeeID
                    photoNumber:(int)photoNumber
                       complete:(void (^)(id object, NSError *error))complete {
-    [self filePostWithPath:@"/Face/RegistFace"
+    [self filePostWithPath:@"/uploadimgctlr"
                       data:data
                       name:@"photo"
                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                            @"123",@"employeeName",
+                            name,@"employeeName",
                             employeeID,@"employeeID",
-                            [NSNumber numberWithInt:photoNumber],@"photonumber",nil]
+                            [NSNumber numberWithInt:photoNumber],@"photoNumber",nil]
                   complete:complete];
 }
 
